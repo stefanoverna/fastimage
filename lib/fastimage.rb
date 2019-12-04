@@ -10,8 +10,7 @@
 # finding image information.
 #
 # FastImage knows about GIF, JPEG, BMP, TIFF, ICO, CUR, PNG, PSD, SVG and WEBP files.
-#
-# FastImage can also read files from the local filesystem by supplying the path instead of a uri.
+# # FastImage can also read files from the local filesystem by supplying the path instead of a uri.
 # In this case FastImage reads the file in chunks of 256 bytes until
 # it has enough. This is possibly a useful bandwidth-saving feature if the file is on a network
 # attached disk rather than truly local.
@@ -508,7 +507,7 @@ class FastImage
       # unknown. We assume the <svg tag cannot be within 10 chars of the end of
       # the file, and is within the first 250 chars.
       begin
-        :svg if (1..25).detect {|n| @stream.peek(10 * n).include?("<svg")}
+        :svg if (1..100).detect {|n| @stream.peek(10 * n).include?("<svg")}
       rescue FiberError
         nil
       end
